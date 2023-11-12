@@ -5,5 +5,8 @@
     "ext-mongodb": "^1.16",
     "mongodb/mongodb": "^1.16",
     "doctrine/mongodb-odm": "^2.5"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.4"
   }
 }
