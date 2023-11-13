@@ -171,4 +171,52 @@ class CrudTest extends TestCase
         // var_dump($cursor3->toArray());
         self::assertCount(2, $cursor3->toArray());
     }
+
+    public function testComplexQueriesWithAggregation()
+    {
+        $this->collection->drop();
+        $this->collection->insertMany([
+            ['username' => 'admin', 'email' => 'foo-admin@example.com', 'age' => 18],
+            ['username' => '(man)1', 'email' => 'foo-@baidu.com', 'age' => 18],
+            ['username' => '(man)2', 'email' => 'man@example.com', 'age' => 18],
+            ['username' => '(man)3', 'email' => 'man@example.com', 'age' => 35],
+        ]);
+
+        $cursor = $this->collection->aggregate([
+            ['$group' => ['_id' => '$age', 'user_count' => ['$sum' => 1]]],
+            ['$sort' => ['user_count' => -1]],
+            ['$limit' => 2],
+        ]);
+        $arr = $cursor->toArray();
+        self::assertSame(18, $arr[0]['_id']);
+        self::assertSame(3, $arr[0]['user_count']);
+        self::assertSame(35, $arr[1]->_id);
+        self::assertSame(1, $arr[1]->user_count);
+    }
+
+    public function testUpdateOne()
+    {
+        $this->collection->drop();
+        $this->collection->insertMany([
+            ['username' => 'admin', 'email' => 'foo-admin@example.com', 'age' => 10],
+            ['username' => 'user', 'email' => 'man@example.com', 'age' => 30],
+        ]);
+
+        $updateResult = $this->collection->updateOne(
+            ['username' => 'admin'],
+            ['$set' => ['age' => 11]],
+        );
+        // var_dump($updateResult);
+        self::assertSame(1, $updateResult->getMatchedCount());
+        self::assertSame(1, $updateResult->getModifiedCount());
+
+        $updateResult = $this->collection->updateOne(
+            ['username' => 'admin'],
+            ['$set' => ['age' => 11]],
+        );
+        // var_dump($updateResult);
+        self::assertSame(1, $updateResult->getMatchedCount());
+        self::assertSame(0, $updateResult->getModifiedCount()); // 若新旧值相同，则不更新
+
+    }
 }
