@@ -217,6 +217,61 @@ class CrudTest extends TestCase
         // var_dump($updateResult);
         self::assertSame(1, $updateResult->getMatchedCount());
         self::assertSame(0, $updateResult->getModifiedCount()); // 若新旧值相同，则不更新
+    }
 
+    public function testUpsert()
+    {
+        $this->collection->drop();
+        $this->collection->insertMany([
+            ['username' => 'admin', 'email' => 'admin@example.com', 'age' => 10],
+        ]);
+
+        $updateResult = $this->collection->updateOne(
+            ['username' => 'admin'],
+            ['$set' => ['age' => 18]],
+            ['upsert' => true],
+        );
+        self::assertSame(1, $updateResult->getMatchedCount());
+        self::assertSame(1, $updateResult->getModifiedCount());
+        // 记录存在则直接更新，不会新增记录
+        self::assertSame(0, $updateResult->getUpsertedCount());
+        self::assertSame(null, $updateResult->getUpsertedId());
+
+        $updateResult = $this->collection->updateOne(
+            ['username' => 'sparklee'],
+            ['$set' => ['name' => '李威', 'age' => 18]],
+            ['upsert' => true],
+        );
+        self::assertSame(0, $updateResult->getMatchedCount());
+        self::assertSame(0, $updateResult->getModifiedCount());
+        // 记录不存在则新增记录
+        self::assertSame(1, $updateResult->getUpsertedCount());
+        self::assertInstanceOf(ObjectId::class, $updateResult->getUpsertedId());
+    }
+
+    public function testDeleteOne()
+    {
+        $this->collection->drop();
+        $this->collection->insertMany([
+            ['username' => 'admin', 'email' => 'admin@example.com', 'age' => 10],
+        ]);
+
+        $deleteResult = $this->collection->deleteOne(['username' => 'admin']);
+        self::assertSame(1, $deleteResult->getDeletedCount());
+
+        $deleteResult = $this->collection->deleteOne(['username' => 'admin']);
+        self::assertSame(0, $deleteResult->getDeletedCount());
+    }
+
+    public function testDeleteMany()
+    {
+        $this->collection->drop();
+        $this->collection->insertMany([
+            ['username' => 'admin', 'email' => 'admin@example.com', 'age' => 10],
+            ['username' => 'sparklee', 'email' => 'sparklee@example.com', 'age' => 10],
+        ]);
+
+        $deleteResult = $this->collection->deleteMany(['age' => 10]);
+        self::assertSame(2, $deleteResult->getDeletedCount());
     }
 }
