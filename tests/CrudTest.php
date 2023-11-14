@@ -217,6 +217,45 @@ class CrudTest extends TestCase
         // var_dump($updateResult);
         self::assertSame(1, $updateResult->getMatchedCount());
         self::assertSame(0, $updateResult->getModifiedCount()); // 若新旧值相同，则不更新
+    }
 
+    public function testUpdateMany()
+    {
+        $this->collection->drop();
+        $this->collection->insertMany([
+            ['username' => 'u1', 'email' => 'foo1@example.com', 'age' => 18],
+            ['username' => 'u2', 'email' => 'foo2@baidu.com', 'age' => 18],
+            ['username' => 'u3', 'age' => 18],
+        ]);
+
+        $updateResult = $this->collection->updateMany(
+            ['age' => 18],
+            ['$set' => ['email' => 'foo1@example.com']],
+        );
+        self::assertSame(3, $updateResult->getMatchedCount());
+        self::assertSame(2, $updateResult->getModifiedCount()); // 若新旧值相同，则不更新
+    }
+
+    /**
+     * Replacement operations are similar to update operations, but instead of updating a document
+     * to include new fields or new field values, a replacement operation replaces the entire document
+     * with a new document, but retains the original document’s _id value.
+     *
+     * @see https://www.mongodb.com/docs/php-library/current/tutorial/crud/#replace-documents
+     */
+    public function testReplace()
+    {
+        $this->collection->drop();
+        $this->collection->insertMany([
+            ['username' => 'u1', 'email' => 'foo1@example.com', 'age' => 18],
+            ['username' => 'u2', 'email' => 'foo2@baidu.com', 'age' => 18],
+        ]);
+
+        $updateResult = $this->collection->replaceOne(
+            ['age' => 18],
+            ['name' => 'foo']
+        );
+        self::assertSame(1, $updateResult->getMatchedCount()); // 仅匹配到1条，而非2条
+        self::assertSame(1, $updateResult->getModifiedCount());
     }
 }
