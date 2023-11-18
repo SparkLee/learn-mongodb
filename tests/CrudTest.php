@@ -1,27 +1,22 @@
 <?php
 
+namespace Tests;
+
 use MongoDB\BSON\ObjectId;
-use MongoDB\Client;
 use MongoDB\Collection;
-use MongoDB\Database;
 use MongoDB\Driver\Cursor;
 use MongoDB\Model\BSONDocument;
-use PHPUnit\Framework\TestCase;
 
 /**
  * @see https://www.mongodb.com/docs/php-library/current/tutorial/crud
  */
-class CrudTest extends TestCase
+class CrudTest extends BaseTest
 {
-    private Client $client;
-    private Database $db;
     private Collection $collection;
 
     protected function setUp(): void
     {
-        $this->client = new Client('mongodb://127.0.0.1:27017');
-        $this->db = $this->client->test;
-        // $this->db=$this->client->selectDatabase('test');
+        parent::setUp();
         $this->collection = $this->db->users;
     }
 

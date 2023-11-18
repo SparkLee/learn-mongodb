@@ -208,7 +208,7 @@
             "version": "1.1.2",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/doctrine/deprecations/1.1.2/doctrine-deprecations-1.1.2.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/doctrine/deprecations/1.1.2/doctrine-deprecations-1.1.2.zip",
                 "reference": "4f2d4f2836e7ec4e7a8625e75c6aa916004db931",
                 "shasum": ""
             },
@@ -723,7 +723,7 @@
             "version": "1.16.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/mongodb/mongodb/1.16.1/mongodb-mongodb-1.16.1.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/mongodb/mongodb/1.16.1/mongodb-mongodb-1.16.1.zip",
                 "reference": "72d80889eb7567c0da4e7d4ddbdcf66dfea90ac3",
                 "shasum": ""
             },
@@ -869,7 +869,7 @@
             "version": "v6.3.8",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/symfony/console/v6.3.8/symfony-console-v6.3.8.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/symfony/console/v6.3.8/symfony-console-v6.3.8.zip",
                 "reference": "0d14a9f6d04d4ac38a8cea1171f4554e325dae92",
                 "shasum": ""
             },
@@ -933,10 +933,10 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/symfony/deprecation-contracts/v3.3.0/symfony-deprecation-contracts-v3.3.0.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/symfony/deprecation-contracts/v3.4.0/symfony-deprecation-contracts-v3.4.0.zip",
                 "reference": "7c3aff79d10325257a001fcf92d991f24fc967cf",
                 "shasum": ""
             },
@@ -1314,7 +1314,7 @@
             "version": "v1.28.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/symfony/polyfill-php80/v1.28.0/symfony-polyfill-php80-v1.28.0.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/symfony/polyfill-php80/v1.28.0/symfony-polyfill-php80-v1.28.0.zip",
                 "reference": "6caa57379c4aec19c0a12a38b59b26487dcfe4b5",
                 "shasum": ""
             },
@@ -1427,11 +1427,11 @@
         },
         {
             "name": "symfony/service-contracts",
-            "version": "v3.3.0",
+            "version": "v3.4.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/symfony/service-contracts/v3.3.0/symfony-service-contracts-v3.3.0.zip",
-                "reference": "40da9cc13ec349d9e4966ce18b5fbcd724ab10a4",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/symfony/service-contracts/v3.4.0/symfony-service-contracts-v3.4.0.zip",
+                "reference": "b3313c2dbffaf71c8de2934e2ea56ed2291a3838",
                 "shasum": ""
             },
             "require": {
@@ -1482,7 +1482,7 @@
                 "interoperability",
                 "standards"
             ],
-            "time": "2023-05-23T14:45:45+00:00"
+            "time": "2023-07-30T20:28:31+00:00"
         },
         {
             "name": "symfony/string",
@@ -1792,11 +1792,11 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "10.1.7",
+            "version": "10.1.8",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpunit/php-code-coverage/10.1.7/phpunit-php-code-coverage-10.1.7.zip",
-                "reference": "355324ca4980b8916c18b9db29f3ef484078f26e",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpunit/php-code-coverage/10.1.8/phpunit-php-code-coverage-10.1.8.zip",
+                "reference": "84838eed9ded511f61dc3e8b5944a52d9017b297",
                 "shasum": ""
             },
             "require": {
@@ -1849,7 +1849,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2023-10-04T15:34:17+00:00"
+            "time": "2023-11-15T13:31:15+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -1947,7 +1947,7 @@
             "version": "3.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/phpunit/php-text-template/3.0.1/phpunit-php-text-template-3.0.1.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpunit/php-text-template/3.0.1/phpunit-php-text-template-3.0.1.zip",
                 "reference": "0c7b06ff49e3d5072f057eb1fa59258bf287a748",
                 "shasum": ""
             },
@@ -1990,7 +1990,7 @@
             "version": "6.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/phpunit/php-timer/6.0.0/phpunit-php-timer-6.0.0.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/phpunit/php-timer/6.0.0/phpunit-php-timer-6.0.0.zip",
                 "reference": "e2a2d67966e740530f4a3343fe2e030ffdc1161d",
                 "shasum": ""
             },
@@ -2653,7 +2653,7 @@
             "version": "5.0.0",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/sebastian/recursion-context/5.0.0/sebastian-recursion-context-5.0.0.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/sebastian/recursion-context/5.0.0/sebastian-recursion-context-5.0.0.zip",
                 "reference": "05909fb5bc7df4c52992396d0116aed689f93712",
                 "shasum": ""
             },
@@ -2740,7 +2740,7 @@
             "version": "4.0.1",
             "dist": {
                 "type": "zip",
-                "url": "https://mirrors.tencent.com/repository/composer/sebastian/version/4.0.1/sebastian-version-4.0.1.zip",
+                "url": "https://mirrors.cloud.tencent.com/repository/composer/sebastian/version/4.0.1/sebastian-version-4.0.1.zip",
                 "reference": "c51fa83a5d8f43f1402e3f32a005e6262244ef17",
                 "shasum": ""
             },
