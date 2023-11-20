@@ -22,22 +22,10 @@ class ComparisonQueryOperatorsTest extends BaseTest
     public function testComparisonQueryOperators()
     {
         $this->inventory->insertMany([
-            [
-                "category" => "cat1", "color" => "color1", "item" => "item1", "price" => 19.9, "age" => 2, "amount" => 6.6,
-                "brand" => "brand1", "quantity" => 350, "tags" => ["school", "office"]
-            ],
-            [
-                "category" => "cat1", "color" => "color1", "item" => "item2", "price" => 19.9, "age" => 1, "amount" => 6.6,
-                "quantity" => 5, "tags" => ["school", "storage", "home"]
-            ],
-            [
-                "category" => "cat1", "color" => "color2", "item" => "item3", "price" => 19.9, "age" => 3, "amount" => 6.6,
-                "brand" => "brand1", "quantity" => 15, "tags" => ["school", "home"]
-            ],
-            [
-                "category" => "cat2", "color" => "color2", "item" => "item4", "price" => 9.99, "age" => 3, "amount" => 6.6,
-                "brand" => "brand2", "tags" => ["office", "storage", "mall"]
-            ],
+            ["category" => "cat1", "color" => "color1", "item" => "item1", "price" => 19.9, "age" => 2, "amount" => 6.6, "brand" => "brand1", "quantity" => 350, "tags" => ["school", "office"]],
+            ["category" => "cat1", "color" => "color1", "item" => "item2", "price" => 19.9, "age" => 1, "amount" => 6.6, "quantity" => 5, "tags" => ["school", "storage", "home"]],
+            ["category" => "cat1", "color" => "color2", "item" => "item3", "price" => 19.9, "age" => 3, "amount" => 6.6, "brand" => "brand1", "quantity" => 15, "tags" => ["school", "home"]],
+            ["category" => "cat2", "color" => "color2", "item" => "item4", "price" => 9.99, "age" => 3, "amount" => 6.6, "brand" => "brand2", "tags" => ["office", "storage", "mall"]],
         ]);
         $cursor = $this->inventory->find([
             'category' => 'cat1',                    // 相等
