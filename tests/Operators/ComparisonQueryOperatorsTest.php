@@ -42,4 +42,25 @@ class ComparisonQueryOperatorsTest extends BaseTest
         // var_dump($result);
         self::assertCount(2, $result);
     }
+
+    public function testLogicalQueryOperators_not()
+    {
+        $this->inventory->insertMany([
+            ["color" => "red"],
+            ["brand" => "iphone", "color" => "green"],
+            ["brand" => "android", "color" => "black"],
+        ]);
+        $cursor = $this->inventory->find(
+            [
+                'brand' => ['$not' => ['$in' => ['iphone', 'ipad']]]
+            ],
+            [
+                'sort' => ['color' => 1],
+            ]
+        );
+        $result = $cursor->toArray();
+        self::assertCount(2, $result);
+        self::assertSame('black', $result[0]['color']);
+        self::assertSame('red', $result[1]['color']);
+    }
 }
