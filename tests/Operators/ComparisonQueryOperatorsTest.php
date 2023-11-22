@@ -52,7 +52,10 @@ class ComparisonQueryOperatorsTest extends BaseTest
         ]);
         $cursor = $this->inventory->find(
             [
-                'brand' => ['$not' => ['$in' => ['iphone', 'ipad']]]
+                'brand' => [
+                    // '$not' => ['$in' => ['iphone', 'ipad']],
+                    '$not' => ['$regex' => '^i.*'], // 使用正规表达式，匹配：brand 不是以 i 开头的文档
+                ]
             ],
             [
                 'sort' => ['color' => 1],
@@ -61,6 +64,6 @@ class ComparisonQueryOperatorsTest extends BaseTest
         $result = $cursor->toArray();
         self::assertCount(2, $result);
         self::assertSame('black', $result[0]['color']);
-        self::assertSame('red', $result[1]['color']);
+        self::assertSame('red', $result[1]['color']); // $not 运算符会包含字段不存在的情况
     }
 }
